@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap.min
+//= require cocoon
+// require turbolinks => quité la gema del gemfile
+//= require datetime_picker_input
 //= require_tree .
