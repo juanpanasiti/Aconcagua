@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160709175017) do
+ActiveRecord::Schema.define(version: 20160710035020) do
+
+  create_table "careers", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "name"
+    t.string   "file_number"
+    t.string   "starting_year"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["student_id"], name: "index_careers_on_student_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "student_id"
+    t.string   "name"
+    t.string   "lastname"
+    t.string   "document"
+    t.datetime "birthdate"
+    t.text     "about_me"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_profiles_on_student_id"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.integer  "subject_id"
+    t.string   "name"
+    t.integer  "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_states_on_subject_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -27,6 +58,27 @@ ActiveRecord::Schema.define(version: 20160709175017) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.integer  "year_id"
+    t.string   "name"
+    t.string   "semester"
+    t.boolean  "elective"
+    t.boolean  "promotable"
+    t.text     "footnote"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["year_id"], name: "index_subjects_on_year_id"
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer  "career_id"
+    t.integer  "elective_hours"
+    t.integer  "number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["career_id"], name: "index_years_on_career_id"
   end
 
 end

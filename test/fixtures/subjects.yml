@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: one
+  name: MyString
+  semester: MyString
+  elective: false
+  promotable: false
+  footnote: MyText
+
+two:
+  year: two
+  name: MyString
+  semester: MyString
+  elective: false
+  promotable: false
+  footnote: MyText

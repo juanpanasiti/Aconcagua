@@ -1,0 +1,18 @@
+<div class="nested-fields">
+    <%= f.input :name, label:'Nombre' %>
+    <%= f.input :lastname, label:'Apellido' %>
+    <%= f.input :document, label:'DNI' %>
+    <%= f.input :birthdate, label:'Fecha de nacimiento',
+      as: :date_time_picker,
+      input_html:
+        { data:
+          {
+            date_format: "DD-MM-YYYY",
+            date_max_date: Time.current.strftime('%Y-%m-%d'),
+            date_view_mode: 'years',
+            date_default_date: 18.years.ago.strftime('%Y-%m-%d')
+          }
+        }
+
+    %>
+  </div>

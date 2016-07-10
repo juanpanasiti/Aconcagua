@@ -1,0 +1,25 @@
+<%= simple_form_for [@student,@profile] do |f| %>
+<div class="row">
+  <%= f.input :name, placeholder:'Nombre', label:false,
+      wrapper_html: {class:'col-md-offset-1 col-xs-12 col-sm-12 col-md-5 col-lg-4'} %>
+  <%= f.input :lastname, placeholder:'Apellido', label:false,
+      wrapper_html: {class: "col-xs-12 col-sm-12 col-md-4 col-lg-3"} %>
+
+</div>
+  <%= f.input :document, placeholder:'DNI', hint: 'Sin puntos ni guiones', label:false %>
+  <%= f.input :birthdate, label:'Fecha de nacimiento',wrapper_html: { class: 'col-md-2' },
+      as: :date_time_picker,
+      input_html:
+        { data:
+          {
+            date_format: "DD-MM-YYYY",
+            date_max_date: Time.current.strftime('%Y-%m-%d'),
+            date_view_mode: 'years',
+            date_default_date: 18.years.ago.strftime('%Y-%m-%d')
+          }
+        }
+
+    %>
+  <%= f.input :about_me, placeholder:'Cuenta algo acerca de ti.. en un futuro prodría ser público..', label:false %>
+  <%= f.button :submit, 'Guardar' %>
+<% end %>

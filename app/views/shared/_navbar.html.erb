@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -15,9 +15,14 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= current_student.get_name %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to fa_icon("user", text: "Iniciar sesión", class:'fa-lg fa-fw'), new_student_session_path %></li>
+              <li><%= link_to fa_icon("dashboard", text: "Dashboard", class:'fa-lg fa-fw'), student_path(current_student) %></li>
+              <% if current_student.profile.present? %>
+                <li><%= link_to fa_icon("pencil", text: "Editar perfil", class:'fa-lg fa-fw'), edit_student_profile_path(current_student,current_student.profile) %></li>
+              <% else %>
+                <li><%= link_to fa_icon("plus", text: "Crear perfil", class:'fa-lg fa-fw'), new_student_profile_path(current_student) %></li>
+              <% end %>
               <li role="separator" class="divider"></li>
-              <li><%= link_to fa_icon("user-plus", text: "Crear cuenta", class:'fa-lg fa-fw'), new_student_registration_path %></li>
+              <li><%= link_to fa_icon("user-times", text: "Cerrar sesión", class:'fa-lg fa-fw'), destroy_student_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
